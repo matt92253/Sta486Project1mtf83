@@ -3,7 +3,7 @@
 \docType{data}
 \name{mathData}
 \alias{mathData}
-\title{Math Survey data from two Portugese schools}
+\title{Math Survey data from two Portuguese schools}
 \format{
 a data frame with 395 observations
 \describe{
@@ -49,6 +49,6 @@ a data frame with 395 observations
 mathData
 }
 \description{
-Math Survey data from two Portugese schools
+Math Survey data from two Portuguese schools
 }
 \keyword{datasets}
