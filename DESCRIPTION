@@ -3,10 +3,11 @@ Type: Package
 Title: What the Package Does (Title Case)
 Version: 0.1.0
 Author: Matthew Flanders
-Maintainer: mtf83@nau.edu
+Maintainer: <mtf83@nau.edu>
 Description: This package provides visual analysis of course grade outcomes as well as construction of a model that can be used in predicting grade outcomes.
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
 Depends: 
     R (>= 2.10)
+RoxygenNote: 7.1.2

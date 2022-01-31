@@ -35,6 +35,7 @@
 #'   \item{G1}{ first period grade: from 0 to 20}
 #'   \item{G2}{ second period grade: from 0 to 20}
 #'   \item{G3}{ final grade: from 0 to 20, output target}
+#'   }
 #'
 #' @source \url{https://archive.ics.uci.edu/ml/datasets/Student+Performance}
 "mergeData"
