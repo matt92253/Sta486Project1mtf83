@@ -1,0 +1,66 @@
+---
+title: "Sta 478 Project 1"
+author: "Matthew Flanders"
+date: "2/6/2022"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+library( Sta486Project1mtf83)
+library( tidyverse)
+library( knitr)
+library( kableExtra)
+```
+
+```{r math-Walc, echo=FALSE}
+ggplot( mathData, aes( x = Walc, y = G3 )) +
+  geom_boxplot() +
+  labs( title = "Effect of Weekend Alcohol Consumption on Final Grade",
+        subtitle = "Survey results of weekend alcohol consumption are from 1 - very low to 5 - very high") +
+  xlab("Weekend Alcohol Consumption")+
+  ylab("Final Grade")
+kable( anova(lm( G3 ~ Walc, mathData)),
+       caption = "1-Way ANOVA Results(Final Grade ~ Weekend Alcohol Consumption)")%>%
+  footnote(general = "", general_title = "")
+```
+\newpage
+```{r math-nursery, echo=FALSE}
+ggplot( porData, aes( x = nursery, y = G3 )) +
+  geom_boxplot() +
+  labs( title = "Effect of Having Attended Nursery School on Final Grade",
+        caption = "abc") +
+  xlab("Nursery School")+
+  ylab("Final Grade") 
+kable( anova(lm( G3 ~ nursery, porData)))
+```
+\newpage
+```{r por-school, echo=FALSE}
+ggplot( porData, aes( x = school, y = G3 ))  +
+  geom_boxplot() +
+  labs( title = "Effect of Attended Different Schools on Final Grade",
+        caption = "abc") +
+  xlab("School")+
+  ylab("Final Grade") 
+kable( anova(lm( G3 ~ school, porData)))
+```
+\newpage
+```{r por-schoolsup, echo=FALSE}
+ggplot( porData, aes( x = schoolsup, y = G3 ))  +
+  geom_boxplot() +
+  labs( title = "Effect of Having Extra Educational Support on Final Grade") +
+  xlab("Extra Educational Support")+
+  ylab("Final Grade") 
+kable( anova(lm( G3 ~ schoolsup, porData)))
+```
+\newpage
+```{r por-nursery, echo=FALSE}
+ggplot( porData, aes( x = nursery, y = G3 ))  +
+  geom_boxplot() +
+  labs( title = "Effect of Having Attended Nursery School on Final Grade",
+        caption = "abc") +
+  xlab("Nursery School")+
+  ylab("Final Grade") 
+kable( anova(lm( G3 ~ nursery, porData)))
+```
+
+

@@ -5,22 +5,24 @@ date: "1/30/2022"
 output: pdf_document
 ---
 
-```{r, echo=F}
+```{r, include=F }
 library( tidyverse)
+library(Sta486Project1mtf83)
 ```
 
 \newpage
 ```{r,echo=FALSE}
 
+data( "mathData" )
+
 ggplot( mathData, aes( x = G3, y=..density..))+
   geom_histogram( bins = 10)+
   facet_grid( . ~ Walc)+
   geom_density()+
-  ggtitle("Final grade by increased weekend alcohol consumption")+
+  labs(title = "Final grade by increased weekend alcohol consumption")+
   xlab("Final Grade")
 ```
-\newpage
-I felt that this graph had interesting behavior when the 2( low alcohol consumption) group had a high density of low test scores. I feel that there may be under reporting, or some bias to the survey results where students are under estimating thier alcohol consumption and that may have a negative effect on their studies.  
+**Figure 1.** I felt that this graph had interesting behavior when the 2( low alcohol consumption) group had a high density of low test scores. I feel that there may be under reporting, or some bias to the survey results where students are under estimating thier alcohol consumption and that may have a negative effect on their studies.  
 \newpage
 ```{r,echo=FALSE}
 
@@ -33,11 +35,12 @@ ggplot( mathData, aes( x = G3))+
   xlab("Final Grade")
 
 ```
-\newpage
-This graph is somewhat confirming my assumptions on that a child getting a headstart on thier education can benifit them in the long run. 
+**Figure 2.** This graph is somewhat confirming my assumptions on that a child getting a headstart on thier education can benifit them in the long run. 
 \newpage
 
 ```{r,echo=FALSE}
+data( "porData")
+
 ggplot( porData, aes( x = G3, y=..density..))+
   geom_histogram( bins = 10)+
   facet_grid( . ~ school)+
@@ -45,15 +48,13 @@ ggplot( porData, aes( x = G3, y=..density..))+
   ggtitle("Final grade by School")+
   xlab("Final Grade")
 ```
-\newpage
-Here I found the differences in the density plot interesting for the two schools. I would like to some further analysis on some of the school demographics to see what may be causing the differences seen.
+**Figure 3.** Here I found the differences in the density plot interesting for the two schools. I would like to some further analysis on some of the school demographics to see what may be causing the differences seen.
 \newpage
 ```{r,echo=FALSE}
 ggplot( porData, aes( x = G3, y=..density.., color = school))+
   geom_density()
 ```
-\newpage
-By stacking the two density plots I felt that the differences were much more apparent. 
+**Figure 4.** By stacking the two density plots I felt that the differences were much more apparent. 
 \newpage
 ```{r,echo=FALSE}
 
@@ -65,13 +66,12 @@ ggplot( porData, aes( x = G3, y=..density..))+
   xlab("Final Grade")
 
 ```
-\newpage
-I think that this graph was interesting in that there were many more students performing poorly with school support, and I also find the large gap between peaks interesting. It could be that some students are able to really benefit from help while some may not be interested in school.
+**Figure 5.** I think that this graph was interesting in that there were many more students performing poorly with school support, and I also find the large gap between peaks interesting. It could be that some students are able to really benefit from help while some may not be interested in school.
 \newpage
 ```{r,echo=FALSE}
 
 ggplot( porData, aes( x = G3))+
-  geom_histogram()+
+  geom_histogram( )+
   facet_grid( . ~ nursery)+
   aes(y=..density..)+
   geom_density()+
@@ -79,5 +79,15 @@ ggplot( porData, aes( x = G3))+
   xlab("Final Grade")
 
 ```
-\newpage
-Another view of the results of attending nursery school. 
+**Figure 6.** Another view of the results of attending nursery school. 
+
+
+
+
+```{r}
+
+ggplot( mathData, aes( x = school, y = G3 )) + geom_boxplot()
+m1 <- lm( G3 ~ Walc, mathData)
+anova(m1)
+
+```
