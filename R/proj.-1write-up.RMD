@@ -9,58 +9,111 @@ output: pdf_document
 library( Sta486Project1mtf83)
 library( tidyverse)
 library( knitr)
-library( kableExtra)
 ```
-
+Variable visual and statistical analysis of starting variables using student survey data of Portuguese students for final math and Portuguese grades. The data set contains 649 observations for the Portuguese data and 395 observations for the math data set. Of the 33 variables 30 variables relate to a student’s demographics such as what the parents do for work, what level of education the student's parents have attained, previous academic history, as well as other questions that relate to how a student spends time and what their social life is like. 
+\newpage
 ```{r math-Walc, echo=FALSE}
 ggplot( mathData, aes( x = Walc, y = G3 )) +
   geom_boxplot() +
-  labs( title = "Effect of Weekend Alcohol Consumption on Final Grade",
+  labs( title = "Effect of Weekend Alcohol Consumption on Math Final Grade",
         subtitle = "Survey results of weekend alcohol consumption are from 1 - very low to 5 - very high") +
   xlab("Weekend Alcohol Consumption")+
-  ylab("Final Grade")
-kable( anova(lm( G3 ~ Walc, mathData)),
-       caption = "1-Way ANOVA Results(Final Grade ~ Weekend Alcohol Consumption)")%>%
-  footnote(general = "", general_title = "")
+  ylab("Math Final Grade")+ 
+  ylim( 0, 20)
+kable( anova(lm( G3 ~ Walc, mathData)))
+# aggregate(mathData$G3, list(mathData$Walc), FUN=median)
 ```
+**Figure 1.** Box plot results of weekend alcohol use and the effect is has on final math grades. Here the medians are fairly close and near 5. Performing a 1-way ANOVA test yields a P-value of 0.2107179, with the P-value being greater than 0.05 we do not have enough evidence to say that weekend alcohol use alone has an effect on final math grades.
 \newpage
 ```{r math-nursery, echo=FALSE}
-ggplot( porData, aes( x = nursery, y = G3 )) +
+ggplot( mathData, aes( x = nursery, y = G3 )) +
   geom_boxplot() +
-  labs( title = "Effect of Having Attended Nursery School on Final Grade",
-        caption = "abc") +
+  labs( title = "Effect of Having Attending Nursery School on Math Final Grade") +
   xlab("Nursery School")+
-  ylab("Final Grade") 
-kable( anova(lm( G3 ~ nursery, porData)))
+  ylab("Math Final Grade") + 
+  ylim( 0, 20)
+kable( anova(lm( G3 ~ nursery, mathData)))
+
 ```
+**Figure 2.** Box plot results of a student having attended nursery school and the effect is has on final math grades. Here the median for the students that did not attend nursery school is 4, while those that did have a median final math grade of 6. 1-way ANOVA test yields a P-value of 0.1468673, with the P-value being greater than 0.05 we do not have enough evidence to say that attending nursery school alone has an effect on final math grades.
 \newpage
 ```{r por-school, echo=FALSE}
-ggplot( porData, aes( x = school, y = G3 ))  +
+ggplot( porData, aes( x = school, y = log(G3) ))  +
   geom_boxplot() +
-  labs( title = "Effect of Attended Different Schools on Final Grade",
-        caption = "abc") +
+  labs( title = "Effect of Attending Different Schools on Portugeese Final Grade") +
   xlab("School")+
-  ylab("Final Grade") 
+  ylab("Portugeese Final Grade") 
+  # ylim( 0, 20)
 kable( anova(lm( G3 ~ school, porData)))
+mm1 <- lm( log(G3) ~ school, porData)
+plot(mm1)
+
+shapiro.test(mm1$residuals)
+
+summary(mm1)
+ggplot(porData)+geom_histogram( aes(x = log(G3)))
+
+aggregate(porData$G3, list(porData$school), FUN=mean)
 ```
+**Figure 3.** Box plot results of students attending different schools and the effect is has on final Portuguese grades. Here the medians are the same with both schools having a median final Portuguese grade of 6. 1-way ANOVA test yields a P-value of 0.0022085, with the P-value being less than 0.05 we have enough evidence to say that attending a different school alone has an effect on final Portuguese grades. Analyzing the linear model built we can see that by attending Mousinho da Silveira (MS) students can be expected to score 1.052 points higher on final Portuguese grades.
 \newpage
 ```{r por-schoolsup, echo=FALSE}
 ggplot( porData, aes( x = schoolsup, y = G3 ))  +
   geom_boxplot() +
-  labs( title = "Effect of Having Extra Educational Support on Final Grade") +
+  labs( title = "Effect of Having Extra Educational Support on Portugeese Final Grade") +
   xlab("Extra Educational Support")+
-  ylab("Final Grade") 
+  ylab("Portugeese Final Grade") + 
+  ylim( 0, 20)
 kable( anova(lm( G3 ~ schoolsup, porData)))
+lm( G3 ~ schoolsup, porData)
 ```
+**Figure 4.** Box plot results of students with extra educational support and the effect is has on final Portuguese grades. Here the medians are close, with students not receiving extra support having a meadin final Portuguese grade of 6 and those that did receive extra support a median final Portuguese grade of 5. 1-way ANOVA test yields a P-value of 0.0212937, with the P-value being less than 0.05 we have enough evidence to say that extra educational support alone has an effect on final math grades. Student that recieve extra educational support can see final Portuguese grades 1.233 less than those who did not receive extra support.
 \newpage
 ```{r por-nursery, echo=FALSE}
 ggplot( porData, aes( x = nursery, y = G3 ))  +
   geom_boxplot() +
-  labs( title = "Effect of Having Attended Nursery School on Final Grade",
-        caption = "abc") +
+  labs( title = "Effect of Having Attended Nursery School on Portugeese Final Grade") +
   xlab("Nursery School")+
-  ylab("Final Grade") 
+  ylab("Portugeese Final Grade") + 
+  ylim( 0, 20) 
 kable( anova(lm( G3 ~ nursery, porData)))
 ```
+**Figure 5.** Box plot results of students who had attended nursery school and the effect is has on final Portuguese grades. Here the median average final Portuguese grades of students who did not attend nursery school is 5, and the median final Portuguese grade of those that did attend nursery school is 6. 1-way ANOVA test yields a P-value of 0.5287476, with the P-value being greater than 0.05 we not not have enough evidence to say that attending nursery school alone has an effect on final Portuguese grades.
 
+```{r, , echo=FALSE}
+# large inferential model building starting with all variables
+ m2 <- lm( G3 ~ Walc + school + schoolsup + nursery, mathData)
+summary( m2)
+
+anova(m2)
+
+ m3 <- lm( G3 ~ Walc +schoolsup + nursery, mathData)
+ 
+ summary( m3)
+
+anova(m3)
+```
+
+```{r}
+ m4 <- lm( G3 ~ schoolsup * nursery, mathData)
+ 
+ summary( m4)
+
+anova(m4)
+plot(m4)
+```
+
+```{r}
+m6 <- lm( log(G3) ~ . - G2 - G1 , mathData)
+summary(m6)
+plot(m6)
+shapiro.test(m6$residuals)
+```
+
+```{r}
+cor(mathData %>% select_if(is.numeric()))
+str(mathData)
+
+  
+```
 
