@@ -8,24 +8,24 @@
 #'   \item{address}{ students address type, U for urban and R for rural}
 #'   \item{famsize}{ students family size, LE3 less than or equal to 3 and GT3 greater than 3}
 #'   \item{Pstatus}{ parent's cohabitation status, T for together and A for apart}
-#'   \item{Medu}{ mother's education: 0 - none,  1 - primary education (4th grade), 2 – 5th to 9th grade, 3 – secondary education or 4 – higher education)}
-#'   \itam{Fedu}{ father's education: 0 - none,  1 - primary education (4th grade), 2 – 5th to 9th grade, 3 – secondary education or 4 – higher education)}
-#'   \item{Mjob}{ mother's job: "teacher", "health" care related, civil "services" (e.g. administrative or police), "at_home" or "other")}
-#'   \item{Fjob}{ father's job: "teacher", "health" care related, civil "services" (e.g. administrative or police), "at_home" or "other")}
+#'   \item{Medu}{ mother's education: 0 - none,  1 - primary education 4th grade, 2 - 5th to 9th grade, 3 - secondary education or 4 - higher education}
+#'   \item{Fedu}{ father's education: 0 - none,  1 - primary education 4th grade, 2 - 5th to 9th grade, 3 - secondary education or 4 - higher education}
+#'   \item{Mjob}{ mother's job: "teacher", "health" care related, civil "services" e.g. administrative or police, "at_home" or "other"}
+#'   \item{Fjob}{ father's job: "teacher", "health" care related, civil "services" e.g. administrative or police, "at_home" or "other"}
 #'   \item{reason}{ reason to choose this school: close to "home", school "reputation", "course" preference or "other"}
 #'   \item{guardian}{ student's guardian: "mother", "father" or "other"}
 #'   \item{traveltime}{ home to school travel time: 1 - <15 min., 2 - 15 to 30 min., 3 - 30 min. to 1 hour, or 4 - >1 hour}
-#'   \item{studytime}{ weekly study time: 1 - <2 hours, 2 - 2 to 5 hours, 3 - 5 to 10 hours, or 4 - >10 hours)}
+#'   \item{studytime}{ weekly study time: 1 - <2 hours, 2 - 2 to 5 hours, 3 - 5 to 10 hours, or 4 - >10 hours}
 #'   \item{failures}{ number of past class failures: n if 1<=n<3, else 4}
 #'   \itme{schoolsup}{ extra educational support: yes or no}
-#'   \itme{famsup}{ family educational support (binary: yes or no}
+#'   \itme{famsup}{ family educational support binary: yes or no}
 #'   \item{paid}{ extra paid classes within the course subject: yes or no}
 #'   \item{activities}{ extra-curricular activities: yes or no}
 #'   \item{nursery}{ attended nursery school: yes or no}
 #'   \item{higher}{ students willingness to take higher education: yes or no}
 #'   \item{internet}{ Internet access at home: yes or no}
 #'   \item{romantic}{ in a romantic relationship: yes or no}
-#'   \item{famrel}{ quality of family relationships: from 1 - very bad to 5 - excellent)}
+#'   \item{famrel}{ quality of family relationships: from 1 - very bad to 5 - excellent}
 #'   \itme{freetime}{ free time after school: from 1 - very low to 5 - very high}
 #'   \item{goout}{ going out with friends: from 1 - very low to 5 - very high}
 #'   \itme{Dalc}{ workday alcohol consumption: from 1 - very low to 5 - very high}

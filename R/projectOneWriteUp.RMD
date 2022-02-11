@@ -10,7 +10,44 @@ library( Sta486Project1mtf83)
 library( tidyverse)
 library( knitr)
 ```
-Variable visual and statistical analysis of starting variables using student survey data of Portuguese students for final math and Portuguese grades. The data set contains 649 observations for the Portuguese data and 395 observations for the math data set. Of the 33 variables 30 variables relate to a student’s demographics such as what the parents do for work, what level of education the student's parents have attained, previous academic history, as well as other questions that relate to how a student spends time and what their social life is like. 
+
+# Introduction
+
+What is the goal and intrest in this data?
+
+Variable visual and statistical analysis of starting variables using student survey data of Portuguese students for final math and Portuguese grades. The data set contains 649 observations for the Portuguese data and 395 observations for the math data set. Of the 33 variables 30 variables relate to a student’s demographics such as what the parents do for work, what level of education the student's parents have attained, previous academic history, as well as other questions that relate to how a student spends time and what their social life is like.
+
+# Data and Orginization
+
+How was the data collected and what challenges were faced with cleaning the data
+
+Include information of transformations and the effects of the transformations
+
+Explain the variables better and with a nice table as well
+
+# Models and Analysis
+
+The results of one-way ANOVA tests and conclusions from them
+
+( could be worth looking at two and three way anova tests, but not needed)
+
+Forward an backwards step models built and discussion of the results, and how they may be different from the first eyeballed guesses
+
+Sharpio-Wilk tests for analyzing the normality of the data
+
+# Discussions of Major Results
+
+
+
+# Conclusions
+
+What was learned from the data
+
+# References
+
+link to the dataset ( and github?)
+
+
 \newpage
 ```{r math-Walc, echo=FALSE}
 ggplot( mathData, aes( x = Walc, y = G3 )) +
@@ -111,8 +148,8 @@ shapiro.test(m6$residuals)
 ```
 
 ```{r}
-# cor(mathData %>% select_if(is.numeric()))
-# str(mathData)
+cor(mathData %>% select_if(is.numeric()))
+str(mathData)
 
   
 ```
